@@ -1,10 +1,36 @@
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/login';
+import Signup from './pages/signup';
 import Homepage from './pages/homepage';
+import { useContext } from 'react';
+import { AuthContext } from './context/authContext';
 
 function App() {
+  const {currentUser} = useContext(AuthContext);
+
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  }  
+
   return (
-    <div className="App">
-      <Homepage />
+    <div className="container">
+      <HashRouter>
+        <Routes>
+          <Route path="/login" element={
+            <Login />
+          } />
+          <Route path='/signup' element={
+            <Signup />
+          } />
+          <Route path="/" element={
+            <RequireAuth>
+              <Homepage />
+            </RequireAuth>
+          } />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
