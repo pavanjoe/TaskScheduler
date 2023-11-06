@@ -26,4 +26,4 @@ const LoginBackground = () => {
     )
 }
 
-export default LoginBackground
+export default LoginBackground;

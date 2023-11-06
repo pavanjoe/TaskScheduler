@@ -18,8 +18,6 @@ function App() {
   }  
 
   return (
-    
-    <div className="container">
       <HashRouter>
         <Routes>
           <Route path="/login" element={
@@ -46,7 +44,6 @@ function App() {
           } />  
         </Routes>
       </HashRouter>
-    </div>
   );
 }
 

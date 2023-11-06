@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600&display=swap');
 
-/* .App {
+ .App {
   text-align: center;
-} */
+}
+
 body{
   text-align: center;
 }
@@ -52,4 +53,4 @@ body{
   background-color: red;
   color: whitesmoke;
   cursor: pointer;
-}
+} 

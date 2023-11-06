@@ -7,7 +7,7 @@ function Homepage () {
     return (
         <div className="homepage">
             <Nav />
-            <div className="body">
+            <div className="content">
                 <div className="left col-6">
                     <br />
                     <h1 className="pt-5">Welcome to Planify!</h1>
@@ -16,7 +16,9 @@ function Homepage () {
                         Say goodbye to to-do list chaos and embrace a more organized, productive you. 
                         Get started with Planify today and seize control of your schedule!
                     </h3>
-                    <button className="mt-4">Get Started</button>
+                    <center>
+                    <button className="start mt-4">Get Started</button>
+                    </center>
                 </div>
             </div>
             <Options />
