@@ -1,4 +1,4 @@
-import './Nav.css'
+import '../styles/Nav.css'
 import { useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";

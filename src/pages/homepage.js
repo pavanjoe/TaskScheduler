@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Options from "../components/Options";
-import './HomePage.css'
+import '../styles/HomePage.css';
 
 function Homepage () {
     return (
