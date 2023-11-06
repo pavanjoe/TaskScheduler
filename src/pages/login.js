@@ -4,6 +4,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/authContext';
 import 'css-doodle';
+import LoginBackground from '../components/loginbackground';
 
 const Login = () => {
     const [error, setError] = useState(null);
@@ -13,47 +14,44 @@ const Login = () => {
     const navigate = useNavigate();
 
     const {dispatch} = useContext(AuthContext)
-       
+
     const handleLogin = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
+          if (user.emailVerified === false) {
+            setError("Email not verified!")
+            alert("Email not verified! Check your mailbox for a verification email.")
+            return;
+          }
           dispatch({type:"LOGIN", payload:user})
           navigate("/")
         })
         .catch((error) => {
-          setError(true);
+          setError("Wrong credentials!");
           console.log(error.code, error.message)
         });
     }
 
-    const handleClick = () => {
+    const handleReset = (e) => {
+        e.preventDefault()
+        navigate("/reset")
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault()
         navigate("/signup")
     }
- 
+
+    const handleResendMail = (e) => {
+        e.preventDefault()
+        navigate("/resend")
+    }
+
     return(
         <>
-            <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "100%", left: "0", top: "0", zIndex: "-2"}}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' 
-                style={{height: "70%", top: "15%", backgroundColor: "#0a0c27", border: "5px solid #0a0c27", borderRadius: "20px"}}>
-                </div>
-            </div>
-            <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "95%", left: "2.5%", top: "0", zIndex: "-1"}}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' style={{height: "70%", top: "15%"}}>
-                    <css-doodle>
-                        <style>
-                        @grid: 10 / 100% 100% / #0a0c27;
-                        background-size: 200px 200px;
-                        @shape: clover 5;
-                        background: hsla(-@i(*4), 70%, 68%, @r.8);
-                        transform:
-                        scale(@r(.2, 1.5))
-                        translate(@m2.@r(±50%));
-                        </style>
-                    </css-doodle>
-                </div>
-            </div>
+            <LoginBackground />
             <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "90%", left: "5%", top: "0", zIndex: "0"}}>
                 <div className='col-xl-3 col-lg-4 col-0'></div>
                 <div className='position-relative col-xl-3 col-lg-5 col-8 mx-auto border rounded' style={{height: "66%", top: "17%", backgroundColor: "white"}}>
@@ -83,22 +81,32 @@ const Login = () => {
                             required />
                         <span 
                             className='text-primary pb-3 text-end'
-                            style={{cursor: "pointer"}} >
+                            style={{cursor: "pointer"}} 
+                            onClick={(e) => handleReset(e)} >
                             Forgot password?
                         </span>
                         <button 
                             type="submit" 
                             className='btn btn-primary mb-3 mx-auto rounded-pill shadow' >
                             Login</button>
-                        {error && <span className='text-danger mx-auto'>Wrong credentials!</span>}
+                        <span className='text-danger mx-auto'>{error}</span>
                         <div className='text-center text-secondary'>
                             Don't have an account? 
                             <span 
                                 className='text-primary px-1' 
-                                onClick={(e) => {handleClick()} }
+                                onClick={(e) => {handleClick(e)} }
                                 style={{cursor: "pointer"}} >
                             Signup
                             </span>
+                        </div>
+                        <div className='text-center text-secondary pt-2' style={{font: "small-caption"}}>
+                            <span
+                                className='text-primary px-1'
+                                onClick={(e) => {handleResendMail(e)}}
+                                style={{cursor: "pointer"}} >
+                            Click here 
+                            </span>
+                            to resend verification email
                         </div>
                     </form>
                 </div>

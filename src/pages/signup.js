@@ -2,6 +2,8 @@ import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { sendEmailVerification } from 'firebase/auth';
+import LoginBackground from "../components/loginbackground"
 
 const Signup = () => {
     const [error, setError] = useState(null);
@@ -19,12 +21,22 @@ const Signup = () => {
         }
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user)
-          navigate("/login")
+            sendEmailVerification(userCredential.user).then(() => {
+                alert("Verification email sent! Check your mailbox!");
+                navigate("/login")
+            })
         })
         .catch((error) => {
-          setError(error.message)
+          console.log(error.message)
+          if (error.code === 'auth/email-already-in-use') {
+            setError('Email address taken!');
+          } else if (error.code === 'auth/invalid-email') {
+            setError('Invalid email address!');
+          } else if (error.code === 'auth/weak-password') {
+            setError('Weak password!');
+          } else {
+            setError(error.code);
+          }
         });
     }
 
@@ -34,26 +46,7 @@ const Signup = () => {
 
     return(
         <>
-            <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "100%", left: "0", top: "0", zIndex: "-2"}}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' 
-                style={{height: "70%", top: "15%", backgroundColor: "#0a0c27", border: "5px solid #0a0c27", borderRadius: "20px"}}>
-                </div>
-            </div>
-            <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "95%", left: "2.5%", top: "0", zIndex: "-1"}}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' style={{height: "70%", top: "15%"}}>
-                    <css-doodle>
-                        <style>
-                        @grid: 10 / 100% 100% / #0a0c27;
-                        background-size: 200px 200px;
-                        @shape: clover 5;
-                        background: hsla(-@i(*4), 70%, 68%, @r.8);
-                        transform:
-                        scale(@r(.2, 1.5))
-                        translate(@m2.@r(±50%));
-                        </style>
-                    </css-doodle>
-                </div>
-            </div>
+            <LoginBackground />
             <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "90%", left: "5%", top: "0", zIndex: "0"}}>
                 <div className='position-relative col-xl-3 col-lg-5 col-8 mx-auto border rounded' style={{height: "66%", top: "17%", backgroundColor: "white"}}>
                     <form 
@@ -90,7 +83,7 @@ const Signup = () => {
                         <button 
                             type="submit" 
                             className='btn btn-primary mb-3 mx-auto rounded-pill shadow' >
-                            Singup</button>
+                            Signup</button>
                         {error && <span className='text-danger mx-auto'>{error}</span>}
                         <div className='text-center text-secondary'>
                             Already have an account? 

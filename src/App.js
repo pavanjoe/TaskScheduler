@@ -4,6 +4,8 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Homepage from './pages/homepage';
+import Reset from './pages/reset';
+import Resend from './pages/resend';
 import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
 
@@ -23,6 +25,12 @@ function App() {
           } />
           <Route path='/signup' element={
             <Signup />
+          } />
+          <Route path='/reset' element={
+            <div><Reset /></div>
+          } />
+          <Route path='/resend' element={
+            <div><Resend /></div>
           } />
           <Route path="/" element={
             <RequireAuth>
