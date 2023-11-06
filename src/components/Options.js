@@ -1,4 +1,4 @@
-import './Options.css';
+import '../styles/Options.css';
 
 function Options() {
   return (
