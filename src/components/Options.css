@@ -1,0 +1,45 @@
+
+.options-container {
+    display: flex; 
+    justify-content: space-between;
+    width: 100%;
+}
+  
+.card {
+    flex: 1;
+    padding: 10px; 
+    border: 1px solid #ccc;
+    text-align: center; 
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+.fas {
+    font-size: 100px;
+    padding-top: 30px;
+    color: #2e98f9;
+}
+
+.btn {
+    background-color: #2e98f9 !important;
+    color: white;
+    border-radius: 25px;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+h5 {
+    font-family:cursive;
+    font-weight: 550;
+}
+
+p {
+    font-family: cursive;
+}

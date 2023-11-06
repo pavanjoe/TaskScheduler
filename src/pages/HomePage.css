@@ -1,0 +1,51 @@
+.homepage .body {
+    background-color: #1f3345; 
+    height: 80vh;
+    background-image: url('../components/images/background-image.png');
+    background-repeat: no-repeat;
+    background-size: 40% 100%;
+    background-position: 90%;
+}
+
+.homepage .left {
+    height: 100%;
+    margin-left: 4%;
+}
+
+h1 {
+    color: rgb(226, 168, 43);
+    font-family: 'Dancing Script', cursive;
+    font-size: 100px;
+    animation: fadeIn 3s;
+}
+
+h3 {
+    color: aliceblue;
+    font-family:cursive;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+.homepage button {
+    background-color: rgb(226, 168, 43);
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s;
+    animation: fadeIn 3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}

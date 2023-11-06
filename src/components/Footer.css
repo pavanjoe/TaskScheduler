@@ -1,0 +1,16 @@
+/* Footer.css */
+.footer {
+    background-color: rgb(47, 47, 47); /* Choose your desired background color */
+    color: #fff; /* Text color for the footer */
+    height: 30px;
+    width: 100%;
+    text-align: center;
+  }
+
+.container {
+    padding-top: 5px;
+}
+
+p {
+    font-family:Arial, Helvetica, sans-serif;
+}
