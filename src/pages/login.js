@@ -88,7 +88,7 @@ const Login = () => {
                         <button 
                             type="submit" 
                             className='btn btn-primary mb-3 mx-auto rounded-pill shadow' >
-                            Login</button>
+                            Log in</button>
                         <span className='text-danger mx-auto'>{error}</span>
                         <div className='text-center text-secondary'>
                             Don't have an account? 
@@ -96,7 +96,8 @@ const Login = () => {
                                 className='text-primary px-1' 
                                 onClick={(e) => {handleClick(e)} }
                                 style={{cursor: "pointer"}} >
-                            Signup
+                                <br />
+                                Sign Up
                             </span>
                         </div>
                         <div className='text-center text-secondary pt-2' style={{font: "small-caption"}}>

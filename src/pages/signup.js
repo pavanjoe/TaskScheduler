@@ -58,7 +58,7 @@ const Signup = () => {
                             className='mx-auto'
                             height={100}
                             width={100} />
-                        <h5 className='text-center mb-4'>Signup</h5>
+                        <h5 className='text-center mb-4'>Sign Up</h5>
                         <input
                             className='form-control mb-3 mx-auto rounded-pill border-0'
                             style={{backgroundColor: "#F5F5F5"}}
@@ -83,7 +83,7 @@ const Signup = () => {
                         <button 
                             type="submit" 
                             className='btn btn-primary mb-3 mx-auto rounded-pill shadow' >
-                            Signup</button>
+                            Sign Up</button>
                         {error && <span className='text-danger mx-auto'>{error}</span>}
                         <div className='text-center text-secondary'>
                             Already have an account? 
