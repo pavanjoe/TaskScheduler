@@ -1,10 +1,10 @@
 import './App.css';
-import Contactpage from './pages/contactpage';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Homepage from './pages/homepage';
+import Contactpage from './pages/contactpage';
 import Reset from './pages/reset';
 import Resend from './pages/resend';
 import { useContext } from 'react';

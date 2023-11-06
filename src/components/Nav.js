@@ -1,4 +1,5 @@
 import './Nav.css'
+import { useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { AuthContext } from '../context/authContext';
@@ -6,6 +7,8 @@ import { useContext } from "react";
 
 function Nav() {
   const {dispatch} = useContext(AuthContext)
+  
+  const navigate = useNavigate(); 
   
   const handleSignOut = (e) => {
     e.preventDefault();
@@ -16,11 +19,11 @@ function Nav() {
     }).catch((error) => {
         console.log(error.code, error.message)
     });
-}
+  }
 
   return (
     <nav className="navbar navbar-expand-lg py-2">
-      <a className="navbar-brand mx-4" href="/">Planify</a>
+      <span className="navbar-brand mx-4" onClick={() => {navigate("/")}} style={{cursor: "pointer"}}>Planify</span>
       <button
         className="navbar-toggler"
         type="button"
@@ -35,24 +38,19 @@ function Nav() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link mx-3" href="/home">
+            <span className="nav-link mx-3" onClick={() => {navigate("/")}} style={{cursor: "pointer"}}>
               Home
-            </a>
+            </span>
           </li>
           <li className="nav-item">
-            <a className="nav-link mx-3" href="/create-task">
-              Create Task
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link mx-3" href="/about-us">
+            <span className="nav-link mx-3" onClick={() => {navigate("/about")}} style={{cursor: "pointer"}}>
               About Us
-            </a>
+            </span>
           </li>
           <li className="nav-item">
-            <a className="nav-link mx-3" href="/contact-us">
+            <span className="nav-link mx-3" onClick={() => {navigate("/contact")}} style={{cursor: "pointer"}}>
               Contact Us
-            </a>
+            </span>
           </li>
         </ul>
       </div>
