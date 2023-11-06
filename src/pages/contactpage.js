@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 const Contactpage = () => {
     const[data,setData]=useState({name:"",email:"",phone:"",message:""})
@@ -15,6 +16,8 @@ const Contactpage = () => {
     }
 
     return (
+        <>
+            <Nav />
             <div className="container">
                 <form action="#" method="POST" onSubmit={handleSubmit} className="contact-form">
                     <h1>Contact <span>Us</span> </h1>
@@ -25,6 +28,8 @@ const Contactpage = () => {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+            <Footer />
+        </>
     );
 }
 export default Contactpage;
