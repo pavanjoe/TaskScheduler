@@ -1,4 +1,5 @@
 import './App.css';
+import Contactpage from './pages/contactpage';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
@@ -17,6 +18,7 @@ function App() {
   }  
 
   return (
+    
     <div className="container">
       <HashRouter>
         <Routes>
@@ -37,6 +39,11 @@ function App() {
               <Homepage />
             </RequireAuth>
           } />
+          <Route path="/contact" element={
+            <RequireAuth>
+              <Contactpage />
+            </RequireAuth>
+          } />  
         </Routes>
       </HashRouter>
     </div>
