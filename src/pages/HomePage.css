@@ -1,4 +1,4 @@
-.body {
+.homepage .body {
     background-color: #1f3345; 
     height: 80vh;
     background-image: url('../components/images/background-image.png');
@@ -7,7 +7,7 @@
     background-position: 90%;
 }
 
-.left {
+.homepage .left {
     height: 100%;
     margin-left: 4%;
 }
@@ -36,7 +36,7 @@ h3 {
 
 
 
-button {
+.homepage button {
     background-color: rgb(226, 168, 43);
     font-size: 24px;
     padding: 10px 20px;
