@@ -5,7 +5,7 @@ import './HomePage.css'
 
 function Homepage () {
     return (
-        <div>
+        <div className="homepage">
             <Nav />
             <div className="body">
                 <div className="left col-6">
