@@ -1,4 +1,4 @@
-import './Homenav.css'
+import '../styles/Homenav.css';
 import { useNavigate } from 'react-router-dom';
 
 function Nav() {

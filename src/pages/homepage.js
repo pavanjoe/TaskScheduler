@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import Options from "../components/Options";
 import Homenav from "../components/Homenav";
-import './HomePage.css';
+import '../styles/HomePage.css';
 import { useNavigate } from 'react-router-dom';
 
 

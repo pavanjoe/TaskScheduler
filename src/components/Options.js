@@ -1,4 +1,4 @@
-import './Options.css';
+import '../styles/Options.css';
 import { useNavigate } from 'react-router-dom';
 
 function Options() {
