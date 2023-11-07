@@ -1,17 +1,21 @@
-.homepage .content {
-    background-color: #1f3345; 
-    height: 80vh;
-    background-image: url('../components/images/background-image.png');
-    background-repeat: no-repeat;
-    background-size: 40% 100%;
-    background-position: 90%;
-    width: 100%;
-}
+.homepage {
+    .content {
+        background-color: #1f3345; 
+        height: 80vh;
+        background-image: url('../components/images/background-image.png');
+        background-repeat: no-repeat;
+        background-size: 40% 100%;
+        background-position: 90%;
+        width: 100%;
+    }
 
-.homepage .left {
-    height: 100%;
-    margin-left: 4%;
-}
+    .left {
+        height: 100%;
+        margin-left: 4%;
+    }
+    
+} 
+
 
 .homepage h1 {
     color: rgb(226, 168, 43);

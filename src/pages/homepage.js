@@ -1,23 +1,28 @@
 import Footer from "../components/Footer";
-import Nav from "../components/Nav";
 import Options from "../components/Options";
+import Homenav from "../components/Homenav";
 import '../styles/HomePage.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function Homepage () {
+
+    const navigate = useNavigate();
+
     return (
         <div className="homepage">
-            <Nav />
+            <Homenav />
             <div className="content">
                 <div className="left col-6">
                     <br />
                     <h1 className="pt-5">Welcome to Planify!</h1>
                     <br />
+                    <center>
                     <h3>At Planify, we simplify your busy life. Our user-friendly platform empowers you to effortlessly create, organize, and manage tasks, helping you stay in control of your time and productivity. 
                         Say goodbye to to-do list chaos and embrace a more organized, productive you. 
-                        Get started with Planify today and seize control of your schedule!
+                        Get started with Planify today and seize control of your schedule! Join us now!
                     </h3>
-                    <center>
-                    <button className="start mt-4">Get Started</button>
+                    <button className="start mt-2" onClick={() => {navigate("/signup")}}>Get Started</button>
                     </center>
                 </div>
             </div>
