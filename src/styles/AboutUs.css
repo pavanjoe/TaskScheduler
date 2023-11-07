@@ -1,0 +1,57 @@
+
+.centered-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .fade-in-element {
+    opacity: 0;
+    transition: opacity 3s;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+
+  .centered-div .header {
+    color: rgb(226, 168, 43);
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px; 
+  }
+
+  .centered-div .intro {
+    color: white;
+    font-size: 18px;
+    width: 80%;
+  }
+  
+  .centered-div table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    color: rgb(226, 168, 43);
+    font-family: cursive;
+    font-size: 25px;
+  }
+  
+  
+  .centered-div td {
+    padding: 10px;
+  }
+
+  .centered-div tr {
+    transition: transform 0.3s;
+  }
+
+  .centered-div tr:hover {
+    transform: scale(1.1);
+  }
+  
+  .centered-div a {
+    text-decoration: none;
+    color: #b3c0ce;
+  }
+  
