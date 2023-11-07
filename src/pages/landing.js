@@ -3,11 +3,21 @@ import Options from "../components/Options";
 import Nav from "../components/Nav";
 import '../styles/HomePage.css';
 import { useNavigate } from 'react-router-dom';
-
+import { useContext } from "react";
+import { AuthContext } from '../context/authContext';
 
 function LandingPage () {
+    const {currentUser} = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        if (currentUser) {
+            navigate("/home");
+        } else {
+            navigate("/signup");
+        }
+    }
 
     return (
         <div className="homepage">
@@ -22,7 +32,7 @@ function LandingPage () {
                         Say goodbye to to-do list chaos and embrace a more organized, productive you. 
                         Get started with Planify today and seize control of your schedule! Join us now!
                     </h3>
-                    <button className="start mt-2" onClick={() => {navigate("/signup")}}>Get Started</button>
+                    <button className="start mt-2" onClick={() => {handleGetStarted()}}>Get Started</button>
                     </center>
                 </div>
             </div>
