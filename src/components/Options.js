@@ -1,9 +1,20 @@
 import '../styles/Options.css';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from '../context/authContext';
 
 function Options() {
+  const {currentUser} = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    if (currentUser) {
+        navigate("/home");
+    } else {
+        navigate("/signup");
+    }
+}
 
   return (
     <div className="options-container">
@@ -12,7 +23,7 @@ function Options() {
         <div class="card-body">
             <h5 class="card-title">Easy Scheduling</h5>
             <p class="card-text">Make scheduling easier by using our visual and user-friendly interface for quickly adding, arranging, and tracking tasks and appointments.</p>
-            <button className='btn' onClick={() => {navigate("/signup")}}>Get Started</button>
+            <button className='btn' onClick={() => {handleGetStarted()}}>Get Started</button>
         </div>
       </div>
       <div class="card text-center col-3">

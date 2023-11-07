@@ -24,11 +24,6 @@
   color: black;
 }
 
-.ml-auto .btn.btn-danger:hover {
-  background-color: #D00 !important;
-  color: white;
-}
-
 .navbar-brand {
   margin-left: auto;
   margin-right: auto;
