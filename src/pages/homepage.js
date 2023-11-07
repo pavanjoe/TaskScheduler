@@ -1,35 +1,142 @@
+import { useState } from "react";
+import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Options from "../components/Options";
-import Homenav from "../components/Homenav";
-import '../styles/HomePage.css';
-import { useNavigate } from 'react-router-dom';
 
+const Homepage = () => {
+    const [view, setView] = useState("list");
 
-function Homepage () {
+    const tasks = [
+        {
+            id: 1,
+            name: "Task 1",
+            description: "Description 1",
+            status: "pending",
+            priorty: "high"
+        },
+        {
+            id: 2,
+            name: "Task 2",
+            description: "Description 2",
+            status: "pending"
+        },
+        {
+            id: 3,
+            name: "Task 3",
+            description: "Description 3",
+            status: "pending"
+        },
+        {
+            id: 4,
+            name: "Task 4",
+            description: "Description 4",
+            status: "pending"
+        },
+        {
+            id: 5,
+            name: "Task 5",
+            description: "Description 5",
+            status: "pending"
+        },
+        {
+            id: 6,
+            name: "Task 6",
+            description: "Description 6",
+            status: "pending"
+        },
+        {
+            id: 7,
+            name: "Task 7",
+            description: "Description 7",
+            status: "pending"
+        },
+        {
+            id: 8,
+            name: "Task 8",
+            description: "Description 8",
+            status: "pending"
+        },
+        {
+            id: 9,
+            name: "Task 9",
+            description: "Description 9",
+            status: "pending"
+        },
+        {
+            id: 10,
+            name: "Task 10",
+            description: "Description 10",
+            status: "pending"
+        },
+        {
+            id: 11,
+            name: "Task 11",
+            description: "Description 11",
+        }
+    ]
 
-    const navigate = useNavigate();
-
-    return (
-        <div className="homepage">
-            <Homenav />
-            <div className="content">
-                <div className="left col-6">
-                    <br />
-                    <h1 className="pt-5">Welcome to Planify!</h1>
-                    <br />
-                    <center>
-                    <h3>At Planify, we simplify your busy life. Our user-friendly platform empowers you to effortlessly create, organize, and manage tasks, helping you stay in control of your time and productivity. 
-                        Say goodbye to to-do list chaos and embrace a more organized, productive you. 
-                        Get started with Planify today and seize control of your schedule! Join us now!
-                    </h3>
-                    <button className="start mt-2" onClick={() => {navigate("/signup")}}>Get Started</button>
-                    </center>
+    return(
+        <div>
+            <Nav />
+            <div className="container-fluid">
+                <div className="row d-flex flex-column align-items-center">
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button className="btn btn-primary" onClick={() => {setView("list")}}>List View</button>
+                    </div>
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button className="btn btn-primary" onClick={() => {setView("grid")}}>Grid View</button>
+                    </div>
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <button className="btn btn-primary" onClick={() => (setView("calendar"))}>Calender view</button>
+                    </div>
                 </div>
             </div>
-            <Options />
+            {view==="grid" && 
+            <div className="container-fluid">
+                <div className="row">
+                    {tasks.map((task) => (
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{task.name}</h5>
+                                    <p className="card-text">{task.description}</p>
+                                    <button className="btn btn-primary">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>}
+            {view==="list" &&
+            <div className="container-fluid">
+                <div className="row d-flex flex-column align-items-center">
+                    {tasks.map((task) => (
+                        <div className="col-8 m-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{task.name}</h5>
+                                    <button className="btn btn-primary">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>}
+            {view==="calendar" &&
+            <div className="container-fluid">
+                <div className="row d-flex flex-column align-items-center">
+                    <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div className="card">
+                            <div className="card-body">
+                                Calendar
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
             <Footer />
         </div>
-    );
+    )
 }
 
 export default Homepage;

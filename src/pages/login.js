@@ -26,7 +26,7 @@ const Login = () => {
             return;
           }
           dispatch({type:"LOGIN", payload:user})
-          navigate("/")
+          navigate("/home")
         })
         .catch((error) => {
           setError("Wrong credentials!");
@@ -82,7 +82,7 @@ const Login = () => {
                             required />
                         <span 
                             className='text-primary pb-3 text-end'
-                            style={{cursor: "pointer"}} 
+                            style={{cursor: "pointer", font: "small-caption"}} 
                             onClick={(e) => handleReset(e)} >
                             Forgot password?
                         </span>
