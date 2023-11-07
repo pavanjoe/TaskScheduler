@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 import Options from "../components/Options";
 import Nav from "../components/Nav";
 import AboutUs from "../components/AboutUs";
-import '../styles/HomePage.css';
+import '../styles/LandingPage.css';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from '../context/authContext';
