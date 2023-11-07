@@ -26,7 +26,7 @@ const Login = () => {
             return;
           }
           dispatch({type:"LOGIN", payload:user})
-          navigate("/")
+          navigate("/home")
         })
         .catch((error) => {
           setError("Wrong credentials!");

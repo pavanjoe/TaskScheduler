@@ -1,14 +1,16 @@
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './context/authContext';
+
 import Login from './pages/login';
 import Signup from './pages/signup';
-import Homepage from './pages/homepage';
+import LandingPage from './pages/landing';
 import Contactpage from './pages/contactpage';
 import Reset from './pages/reset';
 import Resend from './pages/resend';
-import { useContext } from 'react';
-import { AuthContext } from './context/authContext';
+import Homepage from './pages/homepage';
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -33,15 +35,16 @@ function App() {
             <div><Resend /></div>
           } />
           <Route path="/" element={
+            <LandingPage />
+          } />
+          <Route path="/contact" element={
+            <Contactpage />
+          } />  
+          <Route path='/home' element={
             <RequireAuth>
               <Homepage />
             </RequireAuth>
           } />
-          <Route path="/contact" element={
-            <RequireAuth>
-              <Contactpage />
-            </RequireAuth>
-          } />  
         </Routes>
       </HashRouter>
   );

@@ -6,6 +6,8 @@ import { AuthContext } from '../context/authContext';
 import { useContext } from "react";
 
 function Nav() {
+  const {currentUser} = useContext(AuthContext);
+
   const {dispatch} = useContext(AuthContext)
   
   const navigate = useNavigate(); 
@@ -15,6 +17,7 @@ function Nav() {
     signOut(auth)
     .then(() => {
         dispatch({type:"LOGOUT"})
+        alert("Logged out successfully");
         window.location.reload();
     }).catch((error) => {
         console.log(error.code, error.message)
@@ -38,7 +41,7 @@ function Nav() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <span className="nav-link mx-3" onClick={() => {navigate("/")}} style={{cursor: "pointer"}}>
+            <span className="nav-link mx-3" onClick={() => {navigate("/home")}} style={{cursor: "pointer"}}>
               Home
             </span>
           </li>
@@ -54,10 +57,17 @@ function Nav() {
           </li>
         </ul>
       </div>
+      {currentUser &&
       <div className="ml-auto">
         <button className="btn btn-danger me-4"
         onClick={(e) => {handleSignOut(e)}} >Logout</button>
+      </div>}
+      {!currentUser &&
+      <div className="ml-auto">
+        <button className="btn btn-danger me-4"
+        onClick={() => {navigate("/login")}} >Login</button>
       </div>
+      }
     </nav>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Homenav from "../components/Homenav";
+import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
 const Contactpage = () => {
@@ -17,7 +17,7 @@ const Contactpage = () => {
 
     return (
         <>
-            <Homenav />
+            <Nav />
             <div className="container">
                 <form action="#" method="POST" onSubmit={handleSubmit} className="contact-form">
                     <h1>Contact <span>Us</span> </h1>
