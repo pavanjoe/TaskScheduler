@@ -11,6 +11,7 @@ import Contactpage from './pages/contactpage';
 import Reset from './pages/reset';
 import Resend from './pages/resend';
 import Homepage from './pages/homepage';
+import Page404 from './pages/page404';
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -44,6 +45,9 @@ function App() {
             <RequireAuth>
               <Homepage />
             </RequireAuth>
+          } />
+          <Route path="/*" element={
+            <Page404 />
           } />
         </Routes>
       </HashRouter>
