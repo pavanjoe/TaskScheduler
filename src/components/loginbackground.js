@@ -1,23 +1,16 @@
+import '../styles/LoginBackground.css';
 
 const LoginBackground = () => {
     return (
-        <>
-            <style>
-                {`
-                    @keyframes fade {
-                        0%,100% {opacity: 0.4;}
-                        50% {opacity: 1;}
-                    }
-                `}
-            </style>
+        <div className='login-background'>
             <div className="position-absolute d-flex flex-row m-0" 
             style={{height:"100%", width: "100%", left: "0", top: "0", zIndex: "-2", }}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' 
+                <div className='position-relative col-xl-6 col-lg-9 col-md-10 col-11 mx-auto' 
                 style={{height: "70%", top: "15%", backgroundColor: "#0a0c27", border: "5px solid #0a0c27", borderRadius: "20px"}}>
                 </div>
             </div>
             <div className="position-absolute d-flex flex-row m-0" style={{height:"100%", width: "95%", left: "2.5%", top: "0", zIndex: "-1"}}>
-                <div className='position-relative col-xl-6 col-lg-9 col-0 mx-auto' style={{height: "70%", top: "15%", 
+                <div className='doodle-wrapper position-relative col-xl-6 col-lg-9 col-md-10 col-11 mx-auto' style={{height: "70%", top: "15%", 
                 animation: "fade 4s linear", animationIterationCount: "infinite"}}>
                     <css-doodle>
                         {`
@@ -41,11 +34,16 @@ const LoginBackground = () => {
                             @random {
                                 filter: drop-shadow(0 0 10px #fff);
                             }
+                            @media (max-width: 576px) {
+                                cell {
+                                    border: 0px solid #0a0c27 !important;
+                                }
+                            }
                         `}
                     </css-doodle>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

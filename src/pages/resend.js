@@ -48,7 +48,7 @@ const Resend = () => {
             <LoginBackground />
             <div className="position-absolute d-flex flex-row m-0" 
             style={{height:"100%", width: "90%", left: "5%", top: "0", zIndex: "0", animation: "fadeIn 0.5s"}}>
-                <div className='position-relative col-xl-3 col-lg-5 col-8 mx-auto border rounded' style={{height: "56%", top: "22%", backgroundColor: "white"}}>
+                <div className='position-relative col-xl-3 col-lg-5 col-md-6 col-8 mx-auto border rounded' style={{height: "56%", top: "22%", backgroundColor: "white"}}>
                     <form 
                         onSubmit={handleResend} 
                         className='container d-flex flex-column p-sm-3'>
