@@ -8,12 +8,9 @@ function Options() {
 
   const navigate = useNavigate();
 
-  const handleGetStarted = () => {
-    if (currentUser) {
-        navigate("/home");
-    } else {
-        navigate("/signup");
-    }
+  const handleGetStarted = (e) => {
+    e.preventDefault();
+    currentUser ? navigate('/home') : navigate('/signup');
 }
 
   return (
@@ -23,7 +20,7 @@ function Options() {
         <div class="card-body">
             <h5 class="card-title">Easy Scheduling</h5>
             <p class="card-text">Make scheduling easier by using our visual and user-friendly interface for quickly adding, arranging, and tracking tasks and appointments.</p>
-            <button className='btn' onClick={() => {handleGetStarted()}}>Get Started</button>
+            <button className='btn' onClick={(e) => {handleGetStarted(e)}}>Get Started</button>
         </div>
       </div>
       <div class="card text-center col-lg-3 col-sm-6 col-12 my-1">

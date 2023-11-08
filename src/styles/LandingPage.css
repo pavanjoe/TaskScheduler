@@ -1,30 +1,29 @@
-.homepage {
+.landing-page {
     .content {
-        background-color: #1f3345; 
-        height: 80vh;
-        background-image: url('../components/images/background-image.png');
-        background-repeat: no-repeat;
+        background-color: #1f3345;
         background-size: 40% 100%;
-        background-position: 90%;
         width: 100%;
     }
-
-    .left {
-        height: 100%;
-        margin-left: 4%;
-    }
     
-} 
+    
+    @media (min-width: 1200px) {
+        .content {
+            background-image: url('../components/images/background-image.png');
+            background-repeat: no-repeat;
+            background-size: 40% 100%;
+            background-position: 90%;
+        }
+    } 
+}
 
-
-.homepage h1 {
+.landing-page h1 {
     color: rgb(226, 168, 43);
     font-family: 'Dancing Script', cursive;
     font-size: 100px;
     animation: fadeIn 3s;
 }
 
-.homepage h3 {
+.landing-page h3 {
     color: aliceblue;
     font-family:cursive;
     animation: fadeIn 3s;
@@ -39,7 +38,7 @@
     }
 }
 
-.homepage .start {
+.landing-page .start {
     background-color: rgb(226, 168, 43);
     font-size: 18px;
     padding: 10px 20px;
@@ -49,6 +48,6 @@
     animation: fadeIn 3s;
 }
 
-button:hover {
+.landing-page button:hover {
     transform: scale(1.1);
 }
