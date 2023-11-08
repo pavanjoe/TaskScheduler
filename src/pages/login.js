@@ -54,11 +54,11 @@ const Login = () => {
             <LoginBackground />
             <div className="position-absolute d-flex flex-row m-0" 
             style={{height:"100%", width: "90%", left: "5%", top: "0", zIndex: "0", animation: "fadeIn 0.5s"}}>
-                <div className='col-xl-3 col-lg-4 col-0'></div>
-                <div className='position-relative col-xl-3 col-lg-5 col-8 mx-auto border rounded' style={{height: "66%", top: "17%", backgroundColor: "white"}}>
+                <div className='col-xl-3 col-lg-4 col-md-5 col-0'></div>
+                <div className='position-relative col-xl-3 col-lg-5 col-md-5 mx-auto border rounded' style={{height: "66%", maxHeight: "500px", top: "17%", backgroundColor: "white"}}>
                     <form 
                         onSubmit={handleLogin} 
-                        className='container d-flex flex-column p-sm-5'>
+                        className='container d-flex flex-column p-1 p-sm-4'>
                         <img 
                             src="https://cdn.discordapp.com/attachments/1148952235431178302/1170672051296677998/WhatsApp_Image_2023-11-01_at_21.25.28_ed920a72-removebg-preview.png?ex=6559e44f&is=65476f4f&hm=4647a13008ce64a7f147a035dd7e29372e25dace5b6da8fdb3e1077d219042f6&" 
                             alt="logo" 

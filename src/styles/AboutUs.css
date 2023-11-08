@@ -1,22 +1,21 @@
-
-.centered-div {
+.about-us {
+  .centered-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
   }
-  
+    
   .fade-in-element {
     opacity: 0;
     transition: opacity 3s;
   }
-  
+    
   .visible {
     opacity: 1;
   }
 
-  .centered-div .header {
+  .header {
     color: rgb(226, 168, 43);
     font-family: 'Dancing Script', cursive;
     font-size: 80px; 
@@ -25,9 +24,8 @@
   .centered-div .intro {
     color: white;
     font-size: 18px;
-    width: 80%;
   }
-  
+    
   .centered-div table {
     width: 100%;
     border-collapse: collapse;
@@ -36,8 +34,8 @@
     font-family: cursive;
     font-size: 25px;
   }
-  
-  
+    
+    
   .centered-div td {
     padding: 10px;
   }
@@ -54,4 +52,4 @@
     text-decoration: none;
     color: #b3c0ce;
   }
-  
+}
