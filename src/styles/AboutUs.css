@@ -16,7 +16,7 @@
     opacity: 1;
   }
 
-  .centered-div .header {
+  .header {
     color: rgb(226, 168, 43);
     font-family: 'Dancing Script', cursive;
     font-size: 80px; 
@@ -25,7 +25,6 @@
   .centered-div .intro {
     color: white;
     font-size: 18px;
-    width: 80%;
   }
   
   .centered-div table {
