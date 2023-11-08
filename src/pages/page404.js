@@ -19,7 +19,7 @@ const Page404 = () => {
         <div className="container text-left text-white display-3" style={{paddingTop: "25vh"}}>
             <p className="pb-3">Something's wrong here...</p>
             <h1>We can't find the page you're looking for.</h1>
-            <button className="px-3 py-2 bg-white border-white" onClick={(e) => handleClick(e)}
+            <button className="px-3 py-2 bg-white btn" onClick={(e) => handleClick(e)}
             style={{fontSize: "16px", color: "#1f3345"}}>Back To Home</button>
         </div>
     )
