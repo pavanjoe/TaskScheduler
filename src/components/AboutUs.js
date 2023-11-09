@@ -29,7 +29,7 @@ function AboutUs() {
   }, []);
 
   return (
-    <div className='about-us'>
+    <div className='about-us pb-5 p-2'>
       <h2 className='header text-center mt-5'>We Are Team-08</h2>
       <div
         className={`centered-div fade-in-element ${isAboutUsVisible ? 'visible' : ''} d-flex flex-row flex-wrap justify-content-center align-items-center`}
