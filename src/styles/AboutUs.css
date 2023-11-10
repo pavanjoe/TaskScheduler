@@ -36,6 +36,7 @@
   
 .about-us .centered-div td {
   padding: 10px;
+  font-family: cursive;
 }
 
 .about-us .centered-div tr {
@@ -43,10 +44,14 @@
 }
 
 .about-us .centered-div tr:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
 }
 
 .about-us .centered-div a {
   text-decoration: none;
   color: #b3c0ce;
+}
+
+.about-us .intro {
+  font-family: cursive;
 }

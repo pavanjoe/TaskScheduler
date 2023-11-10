@@ -18,60 +18,71 @@ const Homepage = () => {
             id: 2,
             name: "Task 2",
             description: "Description 2",
-            status: "pending"
+            status: "pending",
+            priority: "low"
         },
         {
             id: 3,
             name: "Task 3",
             description: "Description 3",
-            status: "pending"
+            status: "pending",
+            priority: "high"
         },
         {
             id: 4,
             name: "Task 4",
             description: "Description 4",
-            status: "pending"
+            status: "pending",
+            priority: "medium"
         },
         {
             id: 5,
             name: "Task 5",
             description: "Description 5",
-            status: "pending"
+            status: "pending",
+            priority: "medium"
         },
         {
             id: 6,
             name: "Task 6",
             description: "Description 6",
-            status: "pending"
+            status: "pending",
+            priority: "low"
         },
         {
             id: 7,
             name: "Task 7",
             description: "Description 7",
-            status: "pending"
+            status: "pending",
+            priority: "low"
         },
         {
             id: 8,
             name: "Task 8",
             description: "Description 8",
-            status: "pending"
+            status: "pending",
+            priority: "high"
         },
         {
             id: 9,
             name: "Task 9",
             description: "Description 9",
-            status: "pending"
+            status: "pending",
+            priority: "high"
         },
         {
             id: 10,
             name: "Task 10",
             description: "Description 10",
-            status: "pending"
+            status: "pending",
+            priority: "medium"
         },
         {
             id: 11,
             name: "Task 11",
             description: "Description 11",
+            status: "pending",
+            priority: "low"
         }
     ];
 
@@ -165,11 +176,11 @@ const Homepage = () => {
                     </div>
                 </div>
                 { view==="grid" && 
-                <div className="container-fluid">
+                <div className="container-fluid grid-view">
                     <div className="row">
                         { tasks.map((task) => (
                             <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" key={task.id}>
-                                <div className="card">
+                                <div className="card my-3">
                                     <div className="card-body">
                                         <h5 className="card-title">{task.name}</h5>
                                         <p className="card-text">{task.description}</p>
@@ -180,21 +191,29 @@ const Homepage = () => {
                         ))}
                     </div>
                 </div>}
-                { view==="list" &&
-                <div className="container-fluid">
+                {view === "list" && (
+                <div className="container-fluid list-view">
                     <div className="row d-flex flex-column align-items-center">
-                        {tasks.map((task) => (
-                            <div className="col-8 m-3" key={task.id}>
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{task.name}</h5>
-                                        <button className="btn btn-primary">View</button>
-                                    </div>
-                                </div>
+                    {tasks.map((task) => (
+                        <div className="col-8 m-3" key={task.id}>
+                        <div className="card">
+                            <div className="card-body d-flex justify-content-between align-items-center">
+                            <div style={{width:"70%"}}>
+                            <h5 className="">{task.name}</h5>
                             </div>
-                        ))}
+                            <div>
+                            <span className={`priority-tag priority-${task.priority.toLowerCase()} me-2`}>
+                            {task.priority.charAt(0).toUpperCase() + task.priority.slice(1).toLowerCase()}
+                            </span>
+                            <button className="btn btn-primary">View</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    ))}
                     </div>
-                </div> }
+                </div>
+                )}
                 { view==="calendar" &&
                 <div className="container-fluid">
                     <div className="row d-flex flex-column align-items-center">

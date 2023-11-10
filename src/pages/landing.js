@@ -34,7 +34,7 @@ function LandingPage () {
                     </div>
                 </div>
             </div>
-            <div className="content-small"></div>
+            <div className="content-small"></div> 
             <Options />
             <AboutUs />
             <Footer />

@@ -20,6 +20,7 @@
     color: white;
     border-radius: 25px;
     transition: transform 0.2s;
+    font-family: cursive;
 }
 
 .options-container .btn:hover {
@@ -28,4 +29,10 @@
 
 .options-container h5 {
     font-weight: 550;
+    font-family: cursive;
 }
+
+.options-container p {
+    font-family: cursive;
+}
+

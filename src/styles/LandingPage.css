@@ -59,6 +59,8 @@
 .landing-page h3 {
     color: aliceblue;
     animation: fadeIn 3s;
+    font-family: cursive;
+    margin-bottom: 3%;
 }
 
 @keyframes fadeIn {
@@ -78,8 +80,10 @@
     border-radius: 5px;
     transition: transform 0.3s;
     animation: fadeIn 3s;
+    font-family: cursive;
 }
 
 .landing-page button:hover {
     transform: scale(1.1);
 }
+
