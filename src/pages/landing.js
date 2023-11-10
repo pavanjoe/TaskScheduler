@@ -23,7 +23,7 @@ function LandingPage () {
             <div className="content">
                 <div className="col-xl-7 col-12">
                     <h1 className="text-center py-5">Welcome to Planify!</h1>
-                    <div className="px-5">
+                    <div className="px-sm-5 px-1">
                         <center>
                         <h3>At Planify, we simplify your busy life. Our user-friendly platform empowers you to effortlessly create, organize, and manage tasks, helping you stay in control of your time and productivity. 
                             Say goodbye to to-do list chaos and embrace a more organized, productive you. 
@@ -34,6 +34,7 @@ function LandingPage () {
                     </div>
                 </div>
             </div>
+            <div className="content-small"></div>
             <Options />
             <AboutUs />
             <Footer />

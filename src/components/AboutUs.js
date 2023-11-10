@@ -29,13 +29,13 @@ function AboutUs() {
   }, []);
 
   return (
-    <div className='about-us'>
+    <div className='about-us pb-5 p-2'>
       <h2 className='header text-center mt-5'>We Are Team-08</h2>
       <div
         className={`centered-div fade-in-element ${isAboutUsVisible ? 'visible' : ''} d-flex flex-row flex-wrap justify-content-center align-items-center`}
         ref={aboutUsRef}
       >
-        <div className="team-members col-lg-3 col-md-6 col-12">
+        <div className="team-members col-lg-3 col-md-6 col-12 order-md-0 order-2">
           <table>
             <tbody>
                 <tr>
@@ -66,8 +66,8 @@ function AboutUs() {
             </tbody>
             </table>
         </div>
-        <div className='col-lg-1 col-0'></div>
-        <div className='team-intro col-lg-4 col-md-6 col-12 text-center'>
+        <div className='col-lg-1 col-0 order-1'></div>
+        <div className='team-intro col-lg-4 col-md-6 col-12 text-center order-md-2 order-0'>
           <p className='intro mt-3'>Welcome to our team! We are a group of enthusiastic B. Tech Computer Science students from Vellore Institute of Technology, 
             Vellore. With a shared passion for technology, we have come together to create a task scheduling app that simplifies your 
             daily routines. Our goal is to provide you with an efficient and user-friendly solution to manage your tasks and time 

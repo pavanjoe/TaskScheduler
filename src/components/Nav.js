@@ -35,21 +35,13 @@ function Nav() {
   }
 
   return (
-    <>
-      <style>
-        {`
-          .dropdown-item:hover {
-            background-color: #e9ecef;
-            color: black;
-          }
-        `}
-      </style>
+    <div className='nav-wrapper'>
       <nav className="navbar navbar-expand-sm py-2">
         <div className='container-fluid d-flex justify-content-between'>
-          <span className="navbar-brand mx-4 order-0 flex-sm-grow-0 flex-grow-1" onClick={() => {handleLogoClick()}} style={{cursor: "pointer"}}>Planify</span>
+          <span className="navbar-brand mx-sm-4 mx-0 order-0 flex-sm-grow-0 flex-grow-1" onClick={() => {handleLogoClick()}} style={{cursor: "pointer"}}>Planify</span>
           
           <button 
-            class="navbar-toggler mx-3" 
+            class="navbar-toggler mx-3 bg-white" 
             type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNav" 
             aria-controls="navbarTogglerDemo03" 
@@ -100,7 +92,7 @@ function Nav() {
           }
         </div>
       </nav>
-    </>
+    </div>
   );
 }
 

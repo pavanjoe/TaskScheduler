@@ -55,7 +55,7 @@ const Login = () => {
             <div className="position-absolute d-flex flex-row m-0" 
             style={{height:"100%", width: "90%", left: "5%", top: "0", zIndex: "0", animation: "fadeIn 0.5s"}}>
                 <div className='col-xl-3 col-lg-4 col-md-5 col-0'></div>
-                <div className='position-relative col-xl-3 col-lg-5 col-md-5 mx-auto border rounded' style={{height: "66%", maxHeight: "500px", top: "17%", backgroundColor: "white"}}>
+                <div className='position-relative col-xl-3 col-lg-5 col-md-5 col-10 mx-auto border rounded' style={{height: "66%", maxHeight: "500px", top: "17%", backgroundColor: "white"}}>
                     <form 
                         onSubmit={handleLogin} 
                         className='container d-flex flex-column p-1 p-sm-4'>
