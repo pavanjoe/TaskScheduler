@@ -1,19 +1,51 @@
-.landing-page {
-    .content {
-        background-color: #1f3345;
+.landing-page .content {
+    background-color: #1f3345;
+    background-size: 40% 100%;
+    width: 100%;
+}
+
+    
+@media screen and (min-width: 1200px) {
+    .landing-page .content {
+        background-image: url('../components/images/background-image.png');
+        background-repeat: no-repeat;
         background-size: 40% 100%;
-        width: 100%;
+        background-position: 90%;
     }
-    
-    
-    @media (min-width: 1200px) {
-        .content {
-            background-image: url('../components/images/background-image.png');
-            background-repeat: no-repeat;
-            background-size: 40% 100%;
-            background-position: 90%;
-        }
-    } 
+} 
+
+@media screen and (max-width: 1199px) {
+    .landing-page .content-small {   
+        background-image: url('../components/images/background-image.png');
+        background-repeat: no-repeat;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .landing-page .content-small {
+        background-size: 600px 100%;
+        height: 400px;
+        margin-bottom: 5%;
+        background-position: 50%;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .landing-page .content-small {
+        background-size: 400px 100%;
+        height: 350px;
+        margin-bottom: 5%;
+        background-position: 40%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .landing-page .content-small {
+        background-size: 300px 100%;
+        height: 200px;
+        margin-bottom: 5%;
+        background-position: 40%;
+    }
 }
 
 .landing-page h1 {
@@ -21,11 +53,11 @@
     font-family: 'Dancing Script', cursive;
     font-size: 100px;
     animation: fadeIn 3s;
+    line-height: 80px;
 }
 
 .landing-page h3 {
     color: aliceblue;
-    font-family:cursive;
     animation: fadeIn 3s;
 }
 

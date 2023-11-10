@@ -76,139 +76,141 @@ const Homepage = () => {
     ];
 
     return(
-        <div>
+        <>
             <Nav />
-            <div className="container-fluid">
-                <div className="row d-flex flex-column align-items-center mt-2">
-                    <div className="btn-group">
-                        <div
-                            className="dropdown-toggle  m-3"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Views
-                        </div>
-                        <div className="dropdown-menu">
-                            <button
-                            className="dropdown-item"
-                            onClick={() => {
-                                setView("list");
-                            }}
+            <div className="homepage-wrapper pb-5">
+                <div className="container-fluid">
+                    <div className="row d-flex flex-column align-items-center mt-2">
+                        <div className="btn-group">
+                            <div
+                                className="dropdown-toggle  m-3"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
                             >
-                            List View
-                            </button>
-                            <button
-                            className="dropdown-item"
-                            onClick={() => {
-                                setView("grid");
-                            }}
-                            >
-                            Grid View
-                            </button>
-                            <button
-                            className="dropdown-item"
-                            onClick={() => {
-                                setView("calendar");
-                            }}
-                            >
-                            Calendar View
-                            </button>
-                        </div>
-                        <div
-                            className="dropdown-toggle m-3"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Sort by
-                        </div>
-                        <div className="dropdown-menu">
-                            <button
-                            className="dropdown-item"
-                            >
-                            Alphabetical
-                            </button>
-                            <button
-                            className="dropdown-item"
-                            >
-                            Created date
-                            </button>
-                            <button
-                            className="dropdown-item"
-                            >
-                            Deadline
-                            </button>
-                        </div>
-                        <div
-                            className="dropdown-toggle m-3"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Filter by
-                        </div>
-                        <div className="dropdown-menu">
-                            <button
-                            className="dropdown-item"
-                            >
-                            Category
-                            </button>
-                            <button
-                            className="dropdown-item"
-                            >
-                            Priority
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            { view==="grid" && 
-            <div className="container-fluid">
-                <div className="row">
-                    { tasks.map((task) => (
-                        <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" key={task.id}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">{task.name}</h5>
-                                    <p className="card-text">{task.description}</p>
-                                    <button className="btn btn-primary">View</button>
-                                </div>
+                                Views
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </div>}
-            { view==="list" &&
-            <div className="container-fluid">
-                <div className="row d-flex flex-column align-items-center">
-                    {tasks.map((task) => (
-                        <div className="col-8 m-3" key={task.id}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">{task.name}</h5>
-                                    <button className="btn btn-primary">View</button>
-                                </div>
+                            <div className="dropdown-menu">
+                                <button
+                                className="dropdown-item"
+                                onClick={() => {
+                                    setView("list");
+                                }}
+                                >
+                                List View
+                                </button>
+                                <button
+                                className="dropdown-item"
+                                onClick={() => {
+                                    setView("grid");
+                                }}
+                                >
+                                Grid View
+                                </button>
+                                <button
+                                className="dropdown-item"
+                                onClick={() => {
+                                    setView("calendar");
+                                }}
+                                >
+                                Calendar View
+                                </button>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </div> }
-            { view==="calendar" &&
-            <div className="container-fluid">
-                <div className="row d-flex flex-column align-items-center">
-                    <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div className="card">
-                            <div className="card-body">
-                                Calendar
+                            <div
+                                className="dropdown-toggle m-3"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Sort by
+                            </div>
+                            <div className="dropdown-menu">
+                                <button
+                                className="dropdown-item"
+                                >
+                                Alphabetical
+                                </button>
+                                <button
+                                className="dropdown-item"
+                                >
+                                Created date
+                                </button>
+                                <button
+                                className="dropdown-item"
+                                >
+                                Deadline
+                                </button>
+                            </div>
+                            <div
+                                className="dropdown-toggle m-3"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                Filter by
+                            </div>
+                            <div className="dropdown-menu">
+                                <button
+                                className="dropdown-item"
+                                >
+                                Category
+                                </button>
+                                <button
+                                className="dropdown-item"
+                                >
+                                Priority
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                { view==="grid" && 
+                <div className="container-fluid">
+                    <div className="row">
+                        { tasks.map((task) => (
+                            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" key={task.id}>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{task.name}</h5>
+                                        <p className="card-text">{task.description}</p>
+                                        <button className="btn btn-primary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>}
+                { view==="list" &&
+                <div className="container-fluid">
+                    <div className="row d-flex flex-column align-items-center">
+                        {tasks.map((task) => (
+                            <div className="col-8 m-3" key={task.id}>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{task.name}</h5>
+                                        <button className="btn btn-primary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div> }
+                { view==="calendar" &&
+                <div className="container-fluid">
+                    <div className="row d-flex flex-column align-items-center">
+                        <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+                            <div className="card">
+                                <div className="card-body">
+                                    Calendar
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
             </div>
-            }
             <Footer />
-        </div>
+        </>
     );
 }
 
