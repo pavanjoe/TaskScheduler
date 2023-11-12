@@ -4,8 +4,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { AuthContext } from '../context/authContext';
 import { useContext } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { IconContext } from 'react-icons';
+import Logo1 from './images/img_avatar.png';
 
 function Nav() {
   const {currentUser} = useContext(AuthContext);
@@ -14,7 +13,7 @@ function Nav() {
   
   const navigate = useNavigate(); 
   
-  const handleLogoClick = () => {
+  const handleHome = () => {
     if (currentUser) {
       navigate("/home");
     } else {
@@ -38,7 +37,7 @@ function Nav() {
     <div className='nav-wrapper'>
       <nav className="navbar navbar-expand-sm py-2">
         <div className='container-fluid d-flex justify-content-between'>
-          <span className="navbar-brand mx-sm-4 mx-0 order-0 flex-sm-grow-0 flex-grow-1" onClick={() => {handleLogoClick()}} style={{cursor: "pointer"}}>Planify</span>
+          <span className="navbar-brand mx-sm-4 mx-0 order-0 flex-sm-grow-0 flex-grow-1" onClick={() => {handleHome()}} style={{cursor: "pointer"}}>Planify</span>
           
           <button 
             class="navbar-toggler mx-3 bg-white" 
@@ -53,9 +52,8 @@ function Nav() {
           <div className="collapse navbar-collapse order-sm-1 order-2" id="navbarNav">
             <ul className="navbar-nav ml-auto d-flex align-items-start">
               <li className="nav-item">
-                {/* About us is disabled temporarily */}
-                <span className="nav-link mx-3 disabled text-secondary" onClick={() => {navigate("/about")}} style={{cursor: "pointer"}}>
-                  About Us
+                <span className="nav-link mx-3" onClick={() => {handleHome()}} style={{cursor: "pointer"}}>
+                  Home
                 </span>
               </li>
               <li className="nav-item">
@@ -70,14 +68,14 @@ function Nav() {
             <div className='dropdown me-3 order-sm-2 order-1'>
               <div id="profileIconDropdown" data-bs-toggle="dropdown" aria-expanded="false"
               style={{cursor: "pointer"}}>
-                <IconContext.Provider value={{ color: "white", size: "50px", className: "user-icon"}}>
-                  <FaUserCircle />
-                </IconContext.Provider>
+                <img src={Logo1} alt='profile' className='rounded-circle' width='40px' height='40px' />
               </div>
               
               <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileIconDropdown">
                 <li className="dropdown-item" onClick={() => {navigate("/profile")}} 
                 style={{cursor: "pointer", userSelect: "none"}}>Profile</li>
+                <li className="dropdown-item" onClick={() => {navigate("/settings")}}
+                style={{cursor: "pointer", userSelect: "none"}}>Account Settings</li>
                 <li className="dropdown-item" onClick={(e) => {handleSignOut(e)}} 
                 style={{cursor: "pointer", userSelect: "none"}}>Logout</li>
               </ul> 
