@@ -26,11 +26,31 @@
 }
 
 .nav-wrapper .ml-auto .btn.btn-danger:hover {
-  background-color: rgb(156, 117, 33) !important;
+  background-color: rgb(15, 123, 26) !important;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   transition: background-color 0.3s;
+  color: white;
+}
+
+.nav-wrapper .ml-auto .btn.btn-danger-logout {
+  background-color: rgb(226, 168, 43) !important;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: black;
+  font-family: cursive;
+  
+}
+
+.nav-wrapper .ml-auto .btn.btn-danger-logout:hover {
+  background-color: rgb(255, 0, 0) !important;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  color: white;
 }
 
 .nav-wrapper .navbar-brand {

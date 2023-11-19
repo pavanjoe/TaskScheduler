@@ -49,3 +49,13 @@
     background-color: green;  
 }
   
+.homepage-wrapper .grid-view h5 {
+    font-family: cursive;
+
+}
+
+.homepage-wrapper .grid-view .card-text {
+    font-family: cursive;
+    transform: translateX(-12px);
+    font-size: 16px;
+}

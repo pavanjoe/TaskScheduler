@@ -51,7 +51,7 @@ function AboutUs() {
                 <tr>
                 <td>Tejus Cherian Sujith</td>
                 <td><a href="https://github.com/Raven2099"><FontAwesomeIcon icon={faGithub} /> </a></td>
-                <td><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></td>
+                <td><a href="https://www.linkedin.com/in/tejus-cs-7babb6264"><FontAwesomeIcon icon={faLinkedin} /></a></td>
                 </tr>
                 <tr>
                 <td>Ananya Garg</td>
@@ -60,8 +60,8 @@ function AboutUs() {
                 </tr>
                 <tr>
                 <td>Vishnu Sunil Kumar</td>
-                <td><a href="#"><FontAwesomeIcon icon={faGithub} /> </a></td>
-                <td><a href="#"><FontAwesomeIcon icon={faLinkedin} /></a></td>
+                <td><a href="https://github.com/vsk387"><FontAwesomeIcon icon={faGithub} /> </a></td>
+                <td><a href="https://www.linkedin.com/in/vishnu-sunil-kumar-395472237"><FontAwesomeIcon icon={faLinkedin} /></a></td>
                 </tr>
             </tbody>
             </table>

@@ -83,7 +83,7 @@ function Nav() {
             
             {currentUser &&
             <div className='ml-auto order-md-2 order-1'>
-              <div className="btn btn-danger me-4"
+              <div className="btn btn-danger-logout me-4"
               onClick={(e) => {handleSignOut(e)}} >Logout</div>
             </div>
             }

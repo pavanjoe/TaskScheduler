@@ -3,56 +3,187 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import PopUpComponent from './PopUpComponent';
 import axios from 'axios';
+import TaskPopUp from "../components/TaskPopUp";
 
 import "../styles/HomePage.css";
 
 const Homepage = () => {
-    const [view, setView] = useState("list");
 
-    // Pop Up Component
-    const [show, setShow] = useState(false);
-    const handleShow = () => {
-      setShow(true);
-    };
-    const handleClose = () => {
-      setShow(false);
-    };
+  const [view, setView] = useState(localStorage.getItem('view') || "list");
+  const [show, setShow] = useState(false);
+  const [listItems, setListItems] = useState([]);
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [checkedTasks, setCheckedTasks] = useState([]);
+  const [sortedTasks, setSortedTasks] = useState(null);
+  const [sortType, setSortType] = useState(null);
+  const [isUpdating, setIsUpdating] = useState('');
+  const [updateItemText, setUpdateItemText] = useState('');
+  const [newDateValue, setNewDateValue] = useState('');
+  const [newNotesValue, setNewNotesValue] = useState('');
 
-    // SHOW TASKS
-    const [listItems, setListItems] = useState([]);
-    useEffect(()=>{
-      const getItemsList = async () => {
-        try{
-          const res = await axios.get('http://localhost:5500/api/items')
-          setListItems(res.data);
-          console.log('render')
-        }catch(err){
-          console.log(err);
-        }
-      }
-      getItemsList()
-    },[]);
+  const loggedInUserId = 'abc.xyz@google.com';
 
-    // Delete Task
-    const deleteItem = async (id) => {
-      try{
-        const res = await axios.delete(`http://localhost:5500/api/item/${id}`)
-        const newListItems = listItems.filter(task=> task._id !== id);
-        setListItems(newListItems);
-      }catch(err){
-        console.log(err);
-      }
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleViewClick = (task) => {
+    setSelectedTask(task);
+    setShowPopUp(true);
+  };
+
+  const handleViewChange = (newView) => {
+    setView(newView);
+    localStorage.setItem('view', newView);
+  };
+
+
+  const handleCheckboxChange = (taskId) => {
+    if (checkedTasks.includes(taskId)) {
+      setCheckedTasks(checkedTasks.filter(id => id !== taskId));
+    } else {
+      setCheckedTasks([...checkedTasks, taskId]);
     }
+  };
 
-    const tasks = [
-        {
-            id: 1,
-            name: "Task 1",
-            description: "Description 1",
-            status: "pending",
-            priority: "high"
+  const fetchUserTasks = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5500/api/user/${loggedInUserId}/tasks`);
+      setListItems(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5500/api/item/${id}`);
+      const updatedListItems = listItems.filter(task => task._id !== id);
+      setListItems(updatedListItems);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSort = (type) => {
+    let sortedTasksData;
+  
+    if (type === "alphabetical") {
+      sortedTasksData = [...(listItems || [])].sort((a, b) => (a.item || '').localeCompare(b.item || ''));
+    } else if (type === "deadline") {
+      sortedTasksData = [...(listItems || [])].sort((a, b) => {
+        const dateA = new Date(a.Deadline);
+        const dateB = new Date(b.Deadline);
+        return dateA - dateB;
+      });
+    }
+  
+    setSortedTasks(sortedTasksData);
+    setSortType(type);
+  };
+
+       
+  const updateItem = async (e, taskId) => {
+    e.preventDefault();
+    try {
+      const res = await axios.put(`http://localhost:5500/api/item/${taskId}`, {
+        item: updateItemText, 
+        date: newDateValue, 
+        notes: newNotesValue 
+      });
+      
+      const updatedTask = res.data; 
+  
+      const updatedListItems = listItems.map(task => {
+        if (task._id === taskId) {
+          return { ...task, ...updatedTask }; 
         }
-    ];
+        return task;
+      });
+  
+      setListItems(updatedListItems);
+      setUpdateItemText('');
+      setIsUpdating('');
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+    
+const renderUpdateForm = (task) => (
+  <form
+    className="update-form"
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: '300px',
+      margin: '0 auto' 
+    }}
+    onSubmit={(e) => updateItem(e, task._id)}
+  >
+    <input
+      className='update-new-input'
+      style={{
+        marginBottom: '10px',
+        padding: '8px',
+        fontSize: '16px'
+      }}
+      type="text"
+      placeholder="New Item"
+      onChange={e => setUpdateItemText(e.target.value)}
+      value={updateItemText}
+    />
+    <input
+      className='update-new-input'
+      style={{
+        marginBottom: '10px',
+        padding: '8px',
+        fontSize: '16px'
+      }}
+      type="date"
+      placeholder="New Date"
+      onChange={e => setNewDateValue(e.target.value)}
+      value={newDateValue}
+    />
+    <textarea
+      className='update-new-input'
+      style={{
+        marginBottom: '10px',
+        padding: '8px',
+        fontSize: '16px',
+        resize: 'vertical',
+        minHeight: '100px'
+      }}
+      placeholder="New Notes"
+      onChange={e => setNewNotesValue(e.target.value)}
+      value={newNotesValue}
+    ></textarea>
+    <button
+      className="update-new-btn"
+      style={{
+        padding: '10px 20px',
+        backgroundColor: '#3498db',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        fontSize: '16px'
+      }}
+      type='submit'
+    >
+      Update
+    </button>
+  </form>
+        );
+
+  useEffect(() => {
+    fetchUserTasks();
+  }, [loggedInUserId]);
 
     return (
         <>
@@ -74,7 +205,7 @@ const Homepage = () => {
                       <button
                         className="dropdown-item"
                         onClick={() => {
-                          setView("list");
+                          handleViewChange("list");
                         }}
                       >
                         List View
@@ -82,18 +213,10 @@ const Homepage = () => {
                       <button
                         className="dropdown-item"
                         onClick={() => {
-                          setView("grid");
+                          handleViewChange("grid");
                         }}
                       >
                         Grid View
-                      </button>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => {
-                          setView("calendar");
-                        }}
-                      >
-                        Calendar View
                       </button>
                     </div>
     
@@ -106,18 +229,8 @@ const Homepage = () => {
                       Sort by
                     </div>
                     <div className="dropdown-menu">
-                      <button className="dropdown-item">Alphabetical</button>
-                      <button className="dropdown-item">Created date</button>
-                      <button className="dropdown-item">Deadline</button>
-                    </div>
-    
-                    <div
-                      className="dropdown-toggle m-3"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Filter by
+                      <button className="dropdown-item" onClick={() => handleSort("alphabetical")}>Alphabetical</button>
+                      <button className="dropdown-item" onClick={() => handleSort("deadline")}>Deadline</button>
                     </div>
                     <div className="dropdown-menu">
                       <button className="dropdown-item">Category</button>
@@ -126,26 +239,44 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="col-md-3 d-flex align-items-center justify-content-end"> 
-                {/* Create Task Button Here */}
                 <button onClick={handleShow} className="btn btn-success m-3">Create Task</button>
                 <PopUpComponent show={show} handleClose={handleClose} />
                 </div>
               </div>
             </div>
 
+            {showPopUp && selectedTask && (
+                <TaskPopUp task={selectedTask} onClose={() => setShowPopUp(false)} deleteItem={deleteItem} />
+              )}
 
             {view === "grid" && (
               <div className="container-fluid grid-view">
                 <div className="row">
-                  {listItems.map((task) => (
+                  {(sortedTasks || listItems).map((task) => (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 todo-item" key={task.name}>
                       <div className="card my-3">
-                        <div className="card-body">
-                          <h5 className="card-title item-content">{task.item}</h5>
-                          <p className="card-text">{task.notes}</p>
-                          <button className="btn btn-primary me-2">View</button>
-                          <button className="btn btn-danger">Delete</button>
-                        </div>
+                      <div className="card-body">
+                            <h5 className={`me-2 d-inline ${checkedTasks.includes(task._id) ? 'text-decoration-line-through' : ''}`}>
+                              {task.item}
+                            </h5>
+                            <input
+                              type="checkbox"
+                              checked={checkedTasks.includes(task._id)}
+                              onChange={() => handleCheckboxChange(task._id)}
+                              ></input>
+                            <p className="card-text">{task.notes}</p>
+                            <div>
+                              {isUpdating === task._id
+                              ? renderUpdateForm(task)
+                              : (
+                              <>
+                              <button className="btn btn-primary me-2 " onClick={() => handleViewClick(task)}>View</button>
+                              <button className="btn btn-success" onClick={() => setIsUpdating(task._id)}>Update</button>
+                              </>
+                              )
+                              }
+                            </div>
+                          </div>
                       </div>
                     </div>
                   ))}
@@ -159,40 +290,40 @@ const Homepage = () => {
             {view === "list" && (
               <div className="container-fluid list-view">
                 <div className="row d-flex flex-column align-items-center">
-                  {listItems.map((task) => (
+                  {(sortedTasks || listItems).map((task) => (
                     <div className="col-8 m-3 todo-item"  key={task.name}>
                       <div className="card">
                         <div className="card-body d-flex justify-content-between align-items-center">
                           <div style={{ width: "70%" }}>
-                            <h5 className="d-inline me-3 item-content">{task.item}</h5>
-                            <span className={`priority-tag priority-${task.priority.toLowerCase()} me-2`}>
-                              {task.priority.charAt(0).toUpperCase() + task.priority.slice(1).toLowerCase()}
-                            </span>
+                            <h5 className={`me-2 d-inline ${checkedTasks.includes(task._id) ? 'text-decoration-line-through' : ''}`}>
+                              {task.item}
+                            </h5>
+                            
+                            <input
+                            className="d-inline"
+                            type="checkbox"
+                            checked={checkedTasks.includes(task._id)}
+                            onChange={() => handleCheckboxChange(task._id)}
+                            ></input>
+                            <span className={`priority-tag ms-2 priority-${task.priority.toLowerCase()} `}>
+                                  {task.priority.charAt(0).toUpperCase() + task.priority.slice(1).toLowerCase()}
+                              </span>
                           </div>
                           <div>
-                            <button className="btn btn-primary me-2">View</button>
-                            <button className="btn btn-danger delete-item" onClick={()=>{deleteItem(task._id)}}>Delete</button>
+                            {isUpdating === task._id
+                            ? renderUpdateForm(task)
+                            : (
+                            <>
+                            <button className="btn btn-primary me-2 " onClick={() => handleViewClick(task)}>View</button>
+                            <button className="btn btn-success" onClick={() => setIsUpdating(task._id)}>Update</button>
+                            </>
+                            )
+                            }
                           </div>
                         </div>
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-            )}
-
-
-
-
-
-            {view === "calendar" && (
-              <div className="container-fluid">
-                <div className="row d-flex flex-column align-items-center">
-                  <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-                    <div className="card">
-                      <div className="card-body">Calendar</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
