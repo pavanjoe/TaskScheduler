@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../firebase';
-import { sendEmailVerification } from 'firebase/auth';
 import LoginBackground from "../components/loginbackground"
 
 const Signup = () => {

@@ -26,12 +26,11 @@
 }
 
 .nav-wrapper .ml-auto .btn.btn-danger:hover {
-  background-color: rgb(15, 123, 26) !important;
+  background-color: rgb(156, 117, 33) !important;
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
   transition: background-color 0.3s;
-  color: white;
 }
 
 .nav-wrapper .navbar-brand {
