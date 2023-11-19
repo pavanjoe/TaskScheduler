@@ -24,7 +24,9 @@ const Profile = () => {
 
     useEffect(() => {
         // TODO: Get username and email from database
-        setEmail("test@test.com");
+        const user = auth.currentUser;
+        const email = user.email;
+        setEmail(email);
         setName("Test User");
         setCurrentUserName("Test User");
     }, []);
