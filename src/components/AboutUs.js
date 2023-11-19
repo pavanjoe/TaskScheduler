@@ -68,7 +68,7 @@ function AboutUs() {
         </div>
         <div className='col-lg-1 col-0 order-1'></div>
         <div className='team-intro col-lg-4 col-md-6 col-12 text-center order-md-2 order-0'>
-          <p className='intro mt-3'>Welcome to our team! We are a group of enthusiastic B. Tech Computer Science students from Vellore Institute of Technology, 
+          <p className='intro mt-3 mx-0'>Welcome to our team! We are a group of enthusiastic B. Tech Computer Science students from Vellore Institute of Technology, 
             Vellore. With a shared passion for technology, we have come together to create a task scheduling app that simplifies your 
             daily routines. Our goal is to provide you with an efficient and user-friendly solution to manage your tasks and time 
             effectively. Join us on this journey as we strive to make your life more organized and productive. Get connected with us here!

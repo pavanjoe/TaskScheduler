@@ -11,6 +11,7 @@ import Contactpage from './pages/contactpage';
 import Reset from './pages/reset';
 import Resend from './pages/resend';
 import Homepage from './pages/homepage';
+import Profile from './pages/profile';
 import Page404 from './pages/page404';
 
 function App() {
@@ -44,6 +45,11 @@ function App() {
           <Route path='/home' element={
             <RequireAuth>
               <Homepage />
+            </RequireAuth>
+          } />
+          <Route path='/profile' element={
+            <RequireAuth>
+              <Profile />
             </RequireAuth>
           } />
           <Route path="/*" element={
