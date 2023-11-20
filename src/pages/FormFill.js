@@ -70,7 +70,7 @@ export default function FormFill() {
           type="date"
           required
           onChange={(e) => setDate(e.target.value)}
-          value={date}
+          value={date} 
           className={styles.datebox}
         ></input>
 

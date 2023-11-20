@@ -137,6 +137,7 @@ const renderUpdateForm = (task) => (
       placeholder="New Item"
       onChange={e => setUpdateItemText(e.target.value)}
       value={updateItemText}
+      required
     />
     <input
       className='update-new-input'
@@ -149,6 +150,7 @@ const renderUpdateForm = (task) => (
       placeholder="New Date"
       onChange={e => setNewDateValue(e.target.value)}
       value={newDateValue}
+      required
     />
     <textarea
       className='update-new-input'
