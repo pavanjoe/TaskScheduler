@@ -19,7 +19,7 @@ const Contactpage = () => {
     e.preventDefault();
 
     emailjs
-     .sendForm('service_vt5zhrg', 'template_3dpr6aw', form.current, 'cvHLMLLH36YW5TXhi')
+     .sendForm('service_22o6fqg', 'template_3dpr6aw', form.current, 'cvHLMLLH36YW5TXhi')
         .then((result) => {
             console.log(result.text);
             console.log("message sent");
