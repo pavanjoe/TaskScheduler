@@ -53,7 +53,7 @@ const Homepage = () => {
 
   const fetchUserTasks = async () => {
     try {
-      const res = await axios.get(`http://localhost:5500/api/user/${loggedInUserId}/tasks`);
+      const res = await axios.get(`https://planifybackend.onrender.com/api/user/${loggedInUserId}/tasks`);
       setListItems(res.data);
     } catch (err) {
       console.log(err);
@@ -62,7 +62,7 @@ const Homepage = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5500/api/item/${id}`);
+      await axios.delete(`https://planifybackend.onrender.com/api/item/${id}`);
       const updatedListItems = listItems.filter(task => task._id !== id);
       setListItems(updatedListItems);
     } catch (err) {
@@ -91,7 +91,7 @@ const Homepage = () => {
   const updateItem = async (e, taskId) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:5500/api/item/${taskId}`, {
+      const res = await axios.put(`https://planifybackend.onrender.com/api/item/${taskId}`, {
         item: updateItemText, 
         date: newDateValue, 
         notes: newNotesValue 

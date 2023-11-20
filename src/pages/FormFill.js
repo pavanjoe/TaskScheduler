@@ -22,7 +22,7 @@ export default function FormFill() {
     }
 
     try {
-      const res = await axios.post('http://localhost:5500/api/item', {
+      const res = await axios.post('https://planifybackend.onrender.com/api/item', {
         item: itemText,
         priority: priority,
         completed: completed,
